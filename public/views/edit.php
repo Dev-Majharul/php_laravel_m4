@@ -42,21 +42,33 @@ include './header.php';
     <div class="card shadow-sm">
         <div class="card-body p-4">
             <form method="POST">
-                <div class="mb-4">
+                <div class="form-group mb-4">
                     <label class="form-label"><i class="fas fa-car me-2"></i>Vehicle Name</label>
-                    <input type="text" name="name" class="form-control" value="<?= htmlspecialchars($vehicle['name']) ?>" required>
+                    <div class="input-wrapper">
+                        <input type="text" name="name" class="form-control cyber-input" value="<?= htmlspecialchars($vehicle['name']) ?>" placeholder="Enter vehicle name" required>
+                        <div class="input-highlight"></div>
+                    </div>
                 </div>
-                <div class="mb-4">
+                <div class="form-group mb-4">
                     <label class="form-label"><i class="fas fa-tag me-2"></i>Vehicle Type</label>
-                    <input type="text" name="type" class="form-control" value="<?= htmlspecialchars($vehicle['type']) ?>" required>
+                    <div class="input-wrapper">
+                        <input type="text" name="type" class="form-control cyber-input" value="<?= htmlspecialchars($vehicle['type']) ?>" placeholder="Enter vehicle type" required>
+                        <div class="input-highlight"></div>
+                    </div>
                 </div>
-                <div class="mb-4">
+                <div class="form-group mb-4">
                     <label class="form-label"><i class="fas fa-dollar-sign me-2"></i>Price</label>
-                    <input type="number" name="price" class="form-control" value="<?= htmlspecialchars($vehicle['price']) ?>" required>
+                    <div class="input-wrapper">
+                        <input type="number" name="price" class="form-control cyber-input" value="<?= htmlspecialchars($vehicle['price']) ?>" placeholder="Enter price" required>
+                        <div class="input-highlight"></div>
+                    </div>
                 </div>
-                <div class="mb-4">
+                <div class="form-group mb-4">
                     <label class="form-label"><i class="fas fa-image me-2"></i>Image URL</label>
-                    <input type="text" name="image" class="form-control" value="<?= htmlspecialchars($vehicle['image']) ?>" required>
+                    <div class="input-wrapper">
+                        <input type="text" name="image" class="form-control cyber-input" value="<?= htmlspecialchars($vehicle['image']) ?>" placeholder="Enter image URL" required>
+                        <div class="input-highlight"></div>
+                    </div>
                 </div>
                 <div class="d-flex justify-content-between mt-4">
                     <a href="index.php" class="btn btn-secondary btn-lg"><i class="fas fa-arrow-left me-2"></i> Back to List</a>
@@ -158,6 +170,82 @@ include './header.php';
         color: var(--darker-bg);
         box-shadow: 0 0 25px rgba(255, 255, 0, 0.7);
         transform: translateY(-3px);
+    }
+    
+    /* Form Input Styling */
+    .form-group {
+        position: relative;
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+        display: block;
+        color: var(--neon-blue);
+        text-shadow: 0 0 5px rgba(0, 243, 255, 0.5);
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+    
+    .input-wrapper {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .cyber-input {
+        background-color: rgba(18, 18, 26, 0.8);
+        border: 1px solid rgba(0, 243, 255, 0.3);
+        border-radius: 5px;
+        padding: 12px 15px;
+        color: var(--text-color);
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        width: 100%;
+        box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
+    }
+    
+    .cyber-input:focus {
+        outline: none;
+        border-color: var(--neon-blue);
+        box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+        background-color: rgba(18, 18, 26, 0.9);
+    }
+    
+    .cyber-input::placeholder {
+        color: rgba(160, 160, 160, 0.5);
+    }
+    
+    .input-highlight {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(to right, var(--neon-blue), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    .cyber-input:focus + .input-highlight {
+        transform: translateX(0);
+    }
+    
+    /* Add a subtle animation to the input fields */
+    .cyber-input:focus {
+        animation: input-pulse 2s infinite;
+    }
+    
+    @keyframes input-pulse {
+        0% {
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
+        50% {
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+        }
+        100% {
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+        }
     }
 </style>
 
