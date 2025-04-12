@@ -6,7 +6,7 @@ $vehicleManager = new VehicleManager('', '', '', '');
 $id = $_GET['id'] ?? null;
 
 if($id === null){
-    header("Location: ../index.php");
+    header("Location: index.php");
     exit;
 }
 
@@ -15,7 +15,7 @@ $vehicle = $vehicles[$id] ?? null;
 
 
 if(!$vehicle){
-    header("Location: ../index.php");
+    header("Location: index.php");
     exit;
 }
 
@@ -66,6 +66,39 @@ include './header.php';
         </div>
     </div>
 </div>
+
+<style>
+    .card {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+            45deg,
+            transparent,
+            rgba(0, 243, 255, 0.1),
+            transparent
+        );
+        transform: rotate(45deg);
+        animation: cyber-glow 3s linear infinite;
+    }
+    
+    @keyframes cyber-glow {
+        0% {
+            transform: rotate(45deg) translateY(0);
+        }
+        100% {
+            transform: rotate(45deg) translateY(100%);
+        }
+    }
+</style>
 
 </body>
 </html>

@@ -6,7 +6,7 @@ $id = $_GET['id'] ?? null;
 
 if($id === null){
     // print_r("HEllo");
-    header("Location: ../index.php");
+    header("Location: index.php");
     exit;
 }
 
@@ -15,7 +15,7 @@ $vehicle = $vehicles[$id] ?? null;
 
 if(!$vehicle){
     // print_r("HEllo");
-    header("Location: ../index.php");
+    header("Location: index.php");
     exit;
 }
 
@@ -23,7 +23,7 @@ if($_SERVER['REQUEST_METHOD'] === "POST"){
     if(isset($_POST['confirm']) && $_POST['confirm'] === 'yes'){
         $vehicleManager->deleteVehicle($id);
     }
-    header("Location: ../index.php");
+    header("Location: index.php");
     exit;
 }
 
@@ -49,6 +49,55 @@ include './header.php';
         </div>
     </div>
 </div>
+
+<style>
+    .card {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .card::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+            45deg,
+            transparent,
+            rgba(255, 0, 255, 0.1),
+            transparent
+        );
+        transform: rotate(45deg);
+        animation: cyber-glow 3s linear infinite;
+    }
+    
+    @keyframes cyber-glow {
+        0% {
+            transform: rotate(45deg) translateY(0);
+        }
+        100% {
+            transform: rotate(45deg) translateY(100%);
+        }
+    }
+    
+    .alert-danger {
+        animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+        0% {
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.2);
+        }
+        50% {
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
+        }
+        100% {
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.2);
+        }
+    }
+</style>
 
 </body>
 </html>
